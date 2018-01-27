@@ -6,8 +6,75 @@
 <input type="text" name="keyword" ng-model="vm.keyword"><br>
 <button ng-click="vm.searchSwapi(vm.chosenResource, vm.keyword)">Search</button>
 
-<div>
+<div class="search-result" ng-if="vm.chosenResource === 'people'" ng-repeat="result in vm.searchResults.list">
+    <p>{{result.name}}</p>
+    <ul>
+        <li>Born: {{result.birth_year}}</li>
+        <li>Gender: {{result.gender}}</li>
+    </ul>
+    <button>Favorite</button>
+</div>
 
-    Results will go here
+<div class="search-result" ng-if="vm.chosenResource === 'films'" ng-repeat="result in vm.searchResults.list | orderBy: 'episode_id'">
+    <p>{{result.title}}</p>
+    <ul>
+        <li>Episode: {{result.episode_id}}</li>
+        <li>Release Date: {{result.release_date | date}}</li>
+        <li>Director: {{result.director}}</li>
+        <li>Producer(s): {{result.producer}}</li>
+    </ul>
+    <button>Favorite</button>
+</div>
 
+<div class="search-result" ng-if="vm.chosenResource === 'starships'" ng-repeat="result in vm.searchResults.list">
+    <p>{{result.name}}</p>
+    <ul>
+        <li>Model: {{result.model}}</li>
+        <li>Class: {{result.starship_class}}</li>
+        <li>Cost: {{result.cost_in_credits}}</li>
+        <li>Max Speed: {{result.max_atmosphering_speed}}</li>
+        <li>Hyperdrive Rating: {{result.hyperdrive_rating}}</li>
+        <li>Length: {{result.length}}</li>
+        <li>Manufacturer: {{result.manufacturer}}</li>
+        <li>Crew: {{result.crew}}</li>
+        <li>Passengers: {{result.passengers}}</li>
+        <li>Cargo Capacity: {{result.cargo_capacity}}</li>
+    </ul>
+    <button>Favorite</button>
+</div>
+
+<div class="search-result" ng-if="vm.chosenResource === 'vehicles'" ng-repeat="result in vm.searchResults.list">
+    <p>{{result.name}}</p>
+    <ul>
+        <li>Model: {{result.model}}</li>
+        <li>Class: {{result.vehicle_class}}</li>
+        <li>Cost: {{result.cost_in_credits}}</li>
+        <li>Max Speed: {{result.max_atmosphering_speed}}</li>
+        <li>Length: {{result.length}}</li>
+        <li>Manufacturer: {{result.manufacturer}}</li>
+        <li>Crew: {{result.crew}}</li>
+        <li>Passengers: {{result.passengers}}</li>
+        <li>Cargo Capacity: {{result.cargo_capacity}}</li>
+    </ul>
+    <button>Favorite</button>
+</div>
+
+<div class="search-result" ng-if="vm.chosenResource === 'species'" ng-repeat="result in vm.searchResults.list">
+    <p>{{result.name}}</p>
+    <ul>
+        <li>Classification: {{result.classification}}</li>
+        <li>Language: {{result.language}}</li>
+        <li>Average Lifespan: {{result.average_lifespan}}</li>
+    </ul>
+    <button>Favorite</button>
+</div>
+
+<div class="search-result" ng-if="vm.chosenResource === 'planets'" ng-repeat="result in vm.searchResults.list">
+    <p>{{result.name}}</p>
+    <ul>
+        <li>Population: {{result.population}}</li>
+        <li>Climate: {{result.climate}}</li>
+        <li>Terrain: {{result.terrain}}</li>
+    </ul>
+    <button>Favorite</button>
 </div>

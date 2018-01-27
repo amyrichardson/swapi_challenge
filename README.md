@@ -19,6 +19,11 @@ npm install --save angular angular-route angular-material angular-aria angular-a
 - [x] Build out search view html: Dropdown w/ type of resources (people, planets, spaceships, etc.), Input field to enter a keyword, Button to submit search, div for results to be displayed on (add favorite button)
 - [x] Submit button ng-click, runs search function in search controller
 - [x] Search function in controller redirects to the SwapiService
-- [ ] SwapiService makes http request to SWAPI
-- [ ] Results of request are given back to the controller
-- [ ] Display results on DOM
+- [x] SwapiService makes http request to SWAPI
+- [x] Results of request are given back to the controller
+- [x] Display results on DOM
+- [ ] Set up database for favorites (schema, model)
+- [ ] Favorites button - on click, run function in search view addFavorites
+- [ ] Http post to database
+- [ ] Http get in favorites controller
+- [ ] Display favorites in favorites view
