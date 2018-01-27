@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SWAPI Challenge</title>
+        <!-- Angular -->
+        <script src="vendors/angular.min.js" charset="utf-8"></script>
+        <script src="vendors/angular-route.min.js" charset="utf-8"></script>
+    
+        <!-- Angular Material -->
+        <link href="vendors/angular-material.min.css" rel="stylesheet" type="text/css">
+        <script src="vendors/angular-animate.min.js" charset="utf-8"></script>
+        <script src="vendors/angular-aria.min.js" charset="utf-8"></script>
+        <script src="vendors/angular-messages.min.js" charset="utf-8"></script>
+        <script src="vendors/angular-material.min.js" charset="utf-8"></script>
+
+        <link rel="stylesheet" href="styles/main.css">
+
+        <!-- Application -->
+        <script src="scripts/client.js"></script>
+        <script src="scripts/controllers/search.controller.js"></script>
+        <script src="scripts/controllers/favorites.controller.js"></script>
+        <script src="scripts/services/swapi.service.js"></script>
+
+
+
+</head>
+<body ng-app="swapiApp">
+
+    <md-nav-bar
+        md-no-ink-bar="disableInkBar"
+        md-selected-nav-item="currentNavItem"
+        nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-href="#!/search" name="search">Search</md-nav-item>
+            <md-nav-item md-nav-href="#!/favorites" name="favorites">Favorites</md-nav-item>
+    </md-nav-bar>
+
+    <main ng-view>
+        <!--View html loaded here-->
+    </main>
+    
+</body>
+</html>

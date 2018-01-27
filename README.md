@@ -3,16 +3,16 @@
 npm install --save angular angular-route angular-material angular-aria angular-animate angular-messages express mongoose body-parser
 
 ## Set Up Client-Side
-- [ ] Index.html - include nav template and main ng-view
-- [ ] Nav template
-- [ ] 2 views - Search & Favorites
-- [ ] 2 controllers - Search & Favorites
-- [ ] Service - SwapiService (handles requests to Star Wars API)
-- [ ] Client.js config set up
-- [ ] Source all files into index.html
+- [x] Index.html - include nav template and main ng-view
+- [x] Nav template
+- [x] 2 views - Search & Favorites
+- [x] 2 controllers - Search & Favorites
+- [x] Service - SwapiService (handles requests to Star Wars API)
+- [x] Client.js config set up
+- [x] Source all files into index.html
 
 ## Set Up Server
-- [ ] Server.js set up
+- [x] Server.js set up
 - [ ] Set up route: /favorites
 
 ## Base Mode
