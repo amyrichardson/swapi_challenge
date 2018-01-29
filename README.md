@@ -27,3 +27,4 @@ npm install --save angular angular-route angular-material angular-aria angular-a
 - [ ] Http post to database
 - [ ] Http get in favorites controller
 - [ ] Display favorites in favorites view
+- [ ] Styles

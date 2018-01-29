@@ -9,6 +9,6 @@ swapiApp.service('SwapiService', ['$http', function($http){
             .then(function(response){
                 self.searchResults.list = response.data.results;
                 console.log('response from swapi: ', self.searchResults.list);
-            })
-    }
+            }) //end then
+    } //end searchSwapi
 }]);
