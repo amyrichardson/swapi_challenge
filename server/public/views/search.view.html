@@ -1,80 +1,107 @@
-<label for="selectResource">Select a Resource Type: </label>
-<select ng-model="vm.chosenResource">
-    <option ng-repeat="type in vm.resourceTypes" value="{{type}}">{{type}}</option>
-</select> <br>
-<label for="keyword">Keyword: </label>
-<input type="text" name="keyword" ng-model="vm.keyword"><br>
-<button ng-click="vm.searchSwapi(vm.chosenResource, vm.keyword)">Search</button>
+<div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Choose a resource type</label>
+        <md-select ng-model="vm.search.resource" ng-change="vm.clearResults()">
+            <md-option ng-repeat="type in vm.resourceTypes" value="{{type}}">{{type}}</md-option>
+        </md-select>
+    </md-input-container>
 
-<div class="search-result" ng-if="vm.chosenResource === 'people'" ng-repeat="result in vm.searchResults.list">
-    <p>{{result.name}}</p>
-    <ul>
-        <li>Born: {{result.birth_year}}</li>
-        <li>Gender: {{result.gender}}</li>
-    </ul>
-    <button>Favorite</button>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Keyword</label>
+        <input ng-model="vm.search.keyword">
+    </md-input-container>
 </div>
 
-<div class="search-result" ng-if="vm.chosenResource === 'films'" ng-repeat="result in vm.searchResults.list | orderBy: 'episode_id'">
-    <p>{{result.title}}</p>
-    <ul>
-        <li>Episode: {{result.episode_id}}</li>
-        <li>Release Date: {{result.release_date | date}}</li>
-        <li>Director: {{result.director}}</li>
-        <li>Producer(s): {{result.producer}}</li>
-    </ul>
-    <button>Favorite</button>
-</div>
+<md-button ng-click="vm.searchSwapi(vm.search)" class="md-raised md-primary">Search</md-button>
 
-<div class="search-result" ng-if="vm.chosenResource === 'starships'" ng-repeat="result in vm.searchResults.list">
-    <p>{{result.name}}</p>
-    <ul>
-        <li>Model: {{result.model}}</li>
-        <li>Class: {{result.starship_class}}</li>
-        <li>Cost: {{result.cost_in_credits}}</li>
-        <li>Max Speed: {{result.max_atmosphering_speed}}</li>
-        <li>Hyperdrive Rating: {{result.hyperdrive_rating}}</li>
-        <li>Length: {{result.length}}</li>
-        <li>Manufacturer: {{result.manufacturer}}</li>
-        <li>Crew: {{result.crew}}</li>
-        <li>Passengers: {{result.passengers}}</li>
-        <li>Cargo Capacity: {{result.cargo_capacity}}</li>
-    </ul>
-    <button>Favorite</button>
-</div>
+<h3>Search Results</h3>
 
-<div class="search-result" ng-if="vm.chosenResource === 'vehicles'" ng-repeat="result in vm.searchResults.list">
-    <p>{{result.name}}</p>
-    <ul>
-        <li>Model: {{result.model}}</li>
-        <li>Class: {{result.vehicle_class}}</li>
-        <li>Cost: {{result.cost_in_credits}}</li>
-        <li>Max Speed: {{result.max_atmosphering_speed}}</li>
-        <li>Length: {{result.length}}</li>
-        <li>Manufacturer: {{result.manufacturer}}</li>
-        <li>Crew: {{result.crew}}</li>
-        <li>Passengers: {{result.passengers}}</li>
-        <li>Cargo Capacity: {{result.cargo_capacity}}</li>
-    </ul>
-    <button>Favorite</button>
-</div>
+<!--People-->
 
-<div class="search-result" ng-if="vm.chosenResource === 'species'" ng-repeat="result in vm.searchResults.list">
-    <p>{{result.name}}</p>
-    <ul>
-        <li>Classification: {{result.classification}}</li>
-        <li>Language: {{result.language}}</li>
-        <li>Average Lifespan: {{result.average_lifespan}}</li>
-    </ul>
-    <button>Favorite</button>
-</div>
+<md-card ng-if="vm.search.resource === 'people'" ng-repeat="result in vm.searchResults.list" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.name}}</span>
+            <span class="md-subhead">Born: {{result.birth_year}}</span>
+            <span class="md-subhead">Gender: {{result.gender}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
 
-<div class="search-result" ng-if="vm.chosenResource === 'planets'" ng-repeat="result in vm.searchResults.list">
-    <p>{{result.name}}</p>
-    <ul>
-        <li>Population: {{result.population}}</li>
-        <li>Climate: {{result.climate}}</li>
-        <li>Terrain: {{result.terrain}}</li>
-    </ul>
-    <button>Favorite</button>
-</div>
+<!--Films-->
+<md-card ng-if="vm.search.resource === 'films'" ng-repeat="result in vm.searchResults.list | orderBy: 'episode_id'" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.title}}</span>
+            <span class="md-subhead">Episode: {{result.episode_id}}</span>
+            <span class="md-subhead">Release Date: {{result.release_date | date}}</span>
+            <span class="md-subhead">Director: {{result.director}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
+
+<!--Starships-->
+<md-card ng-if="vm.search.resource === 'starships'" ng-repeat="result in vm.searchResults.list" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.name}}</span>
+            <span class="md-subhead">Model: {{result.model}}</span>
+            <span class="md-subhead">Cost: {{result.cost_in_credits}}</span>
+            <span class="md-subhead">Passengers: {{result.passengers}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
+
+<!--Vehicles-->
+<md-card ng-if="vm.search.resource === 'vehicles'" ng-repeat="result in vm.searchResults.list" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.name}}</span>
+            <span class="md-subhead">Model: {{result.model}}</span>
+            <span class="md-subhead">Cost: {{result.cost_in_credits}}</span>
+            <span class="md-subhead">Passengers: {{result.passengers}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
+
+<!--Species-->
+<md-card ng-if="vm.search.resource === 'species'" ng-repeat="result in vm.searchResults.list" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.name}}</span>
+            <span class="md-subhead">Classification: {{result.classification}}</span>
+            <span class="md-subhead">Language: {{result.language}}</span>
+            <span class="md-subhead">Average Lifespan: {{result.average_lifespan}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
+
+<!--Starships-->
+<md-card ng-if="vm.search.resource === 'planets'" ng-repeat="result in vm.searchResults.list" md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{result.name}}</span>
+            <span class="md-subhead">Population: {{result.population}}</span>
+            <span class="md-subhead">Climate: {{result.climate}}</span>
+            <span class="md-subhead">Terrain: {{result.terrain}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button>Favorite</md-button>
+    </md-card-actions>
+</md-card>
